@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name         Sort WorkFlowy
 // @namespace    https://rawbytz.wordpress.com
-// @version      3.3
+// @version      3.3.1
 // @description  Use Ctrl+Shift+S to sort the current zoom level children.
 // @author       rawbytz
 // @match        https://workflowy.com/*
 // @match        https://beta.workflowy.com/*
-// @updateUrl    https://gist.github.com/rawbytz/3b295652c24738b044dd4d4ee8b4a0e3/raw/sortWorkFlowy.user.js
-// @downloadUrl  https://gist.github.com/rawbytz/3b295652c24738b044dd4d4ee8b4a0e3/raw/sortWorkFlowy.user.js
+// @updateUrl    https://github.com/rawbytz/sort/raw/master/sortMe.user.js
+// @downloadUrl  https://github.com/rawbytz/sort/raw/master/sortMe.user.js
 // @grant        none
 // @run-at       document-end
 // ==/UserScript==
