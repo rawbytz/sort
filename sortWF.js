@@ -1,7 +1,7 @@
-(function sortWF_3_3(maxChildren = 400) {
+(function sortWF_3_4(maxChildren = 400) {
   function toastMsg(str, sec, err) {
-    WF.showMessage(str.bold(), err);
-    setTimeout(() => WF.hideMessage(), (sec || 2) * 1000);
+    WF.showMessage(str, err);
+    setTimeout(WF.hideMessage, (sec || 2) * 1000);
   }
   function sortAndMove(items, reverse) {
     WF.hideDialog();

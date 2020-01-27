@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Sort WorkFlowy
 // @namespace    https://rawbytz.wordpress.com
-// @version      3.3.1
+// @version      3.4
 // @description  Use Ctrl+Shift+S to sort the current zoom level children.
 // @author       rawbytz
 // @match        https://workflowy.com/*
@@ -16,8 +16,8 @@
   'use strict';
   function sortWF(maxChildren = 400) {
     function toastMsg(str, sec, err) {
-      WF.showMessage(str.bold(), err);
-      setTimeout(() => WF.hideMessage(), (sec || 2) * 1000);
+      WF.showMessage(str, err);
+      setTimeout(WF.hideMessage, (sec || 2) * 1000);
     }
     function sortAndMove(items, reverse) {
       WF.hideDialog();
