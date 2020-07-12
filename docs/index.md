@@ -22,6 +22,7 @@
 - [rawbytz Blog post](https://rawbytz.wordpress.com/2018/06/07/sorting-bullets-in-workflowy-easy-as-1-2-3/)
 
 ## Version Notes:
+- v3.4.1 (2020-07-12) bug fix for (userscript only) keyboard shortcut listener
 - v3.4 (2020-01-26) updated html encoder
 - v3.3 (2019-05-29) Bug fix: will not try to sort Read-Only bullets
 - v3.2 (2019-01-06) Minor code cleanup 
