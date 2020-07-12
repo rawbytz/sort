@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Sort WorkFlowy
 // @namespace    https://rawbytz.wordpress.com
-// @version      3.4
+// @version      3.4.1
 // @description  Use Ctrl+Shift+S to sort the current zoom level children.
 // @author       rawbytz
 // @match        https://workflowy.com/*
@@ -60,7 +60,7 @@
   }
   // Ctrl+Shft+S
   document.addEventListener("keydown", function (event) {
-    if (!event.altKey && event.ctrlKey && event.shiftKey && !event.metaKey && event.key === "s") {
+    if (!event.altKey && event.ctrlKey && event.shiftKey && !event.metaKey && event.key === "S") {
       sortWF();
       event.preventDefault();
     }
