@@ -47,10 +47,9 @@
         btn2.onclick = function () { sortAndMove(children, true) };
       }, 100);
     }
-    const canCreateChild = item => !item.isReadOnly() || item.isMainDocumentRoot() || (item.isAddedSubtreePlaceholder() && !item.data.added_subtree.isReadOnly());
     if (WF.currentSearchQuery()) return void toastMsg("Sorting is disabled when search is active.", 3, true);
     const parent = WF.currentItem();
-    if (!canCreateChild(parent)) return void toastMsg("Read-Only. Cannot sort bullets.", 3, true);
+    if (parent.isEmbedded()) return void toastMsg("Sorting disabled for added shares.", 3, true);
     const children = parent.getChildren();
     if (children.length < 2) return void toastMsg("Nothing to sort.", 3, true);
     if (children.length > maxChildren) return void toastMsg(`Sorting more than ${maxChildren} children upsets the WorkFlowy gods, and has been disabled.`, 5, true);
