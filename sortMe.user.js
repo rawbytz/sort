@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Sort WorkFlowy
 // @namespace    https://rawbytz.wordpress.com
-// @version      3.5
+// @version      3.6
 // @description  Use Ctrl+Shift+S to sort the current zoom level children.
 // @author       rawbytz
 // @match        https://workflowy.com/*

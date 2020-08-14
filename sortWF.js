@@ -1,4 +1,4 @@
-(function sortWF_3_5(maxChildren = 400) {
+(function sortWF_3_6(maxChildren = 400) {
   function toastMsg(str, sec, err) {
     WF.showMessage(str, err);
     setTimeout(WF.hideMessage, (sec || 2) * 1000);
