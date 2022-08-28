@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Sort WorkFlowy
 // @namespace    https://rawbytz.wordpress.com
-// @version      3.7
+// @version      3.8
 // @description  Use Ctrl+Shift+S to sort the current zoom level children.
 // @author       rawbytz
 // @match        https://workflowy.com/*
@@ -39,13 +39,16 @@
       const style = '.btnX{font-size:18px;background-color:steelblue;border:2px solid;border-radius:20px;color:#fff;padding:5px 15px;margin-top:16px;margin-right:16px}.btnX:focus{border-color:#c4c4c4}';
       const buttons = addButton(1, "A-Z") + addButton(2, "Z-A");
       WF.showAlertDialog(`<style>${htmlEscText(style)}</style><div>${bodyHtml}</div><div>${buttons}</div>`, title);
-      setTimeout(() => {
-        const btn1 = document.getElementById("btn1");
-        const btn2 = document.getElementById("btn2");
-        btn1.focus();
-        btn1.onclick = function () { sortAndMove(children) };
-        btn2.onclick = function () { sortAndMove(children, true) };
-      }, 100);
+      const intervalId = setInterval(function () {
+        let btn1 = document.getElementById("btn1");
+        if (btn1) {
+          clearInterval(intervalId);
+          const btn2 = document.getElementById("btn2");
+          btn1.focus();
+          btn1.onclick = function () { sortAndMove(children) };
+          btn2.onclick = function () { sortAndMove(children, true) };
+        }
+      }, 50);
     }
     if (WF.currentSearchQuery()) return void toastMsg("Sorting is disabled when search is active.", 3, true);
     const parent = WF.currentItem();
