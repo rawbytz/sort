@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Sort WorkFlowy
 // @namespace    https://rawbytz.wordpress.com
-// @version      3.8
+// @version      3.9
 // @description  Use Ctrl+Shift+S to sort the current zoom level children.
 // @author       rawbytz
 // @match        https://workflowy.com/*
@@ -52,7 +52,7 @@
     }
     if (WF.currentSearchQuery()) return void toastMsg("Sorting is disabled when search is active.", 3, true);
     const parent = WF.currentItem();
-    if (parent.isEmbedded()) return void toastMsg("Sorting disabled for added shares.", 3, true);
+    if (parent.isReadOnly()) return void toastMsg("Parent is read only and cannot be sorted.", 3, true);
     const children = parent.getChildren();
     if (children.length < 2) return void toastMsg("Nothing to sort.", 3, true);
     if (children.length > maxChildren) return void toastMsg(`Sorting more than ${maxChildren} children upsets the WorkFlowy gods, and has been disabled.`, 5, true);
