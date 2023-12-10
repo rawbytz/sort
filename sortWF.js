@@ -12,25 +12,41 @@
           if (item.getPriority() !== i) WF.moveItems([item], parent, i);
         });
       });
-      // set focus to parent after sort
+      /* set focus to parent after sort */
       WF.editItemName(parent);
       toastMsg(`Sorted ${reverse ? "Z-A." : "A-Z."}`, 1)
+    }, 50);
+  }
+  function reverseOrder(items) {
+    WF.hideDialog();
+    setTimeout(() => {
+      items.sort((a, b) => (b.getPriority() <= a.getPriority() ? -1 : 1)) ;
+      WF.editGroup(() => {
+        items.forEach((item, i) => {
+          if (item.getPriority() !== i) WF.moveItems([item], parent, i);
+        });
+      });
+      /* set focus to parent after sort */
+      WF.editItemName(parent);
+      toastMsg('Reversed order of list', 1);
     }, 50);
   }
   const htmlEscText = str => str.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;");
   function showSortDialog(bodyHtml, title) {
     const addButton = (num, name) => `<button type="button" class="btnX" id="btn${num.toString()}">${name}</button>`;
     const style = '.btnX{font-size:18px;background-color:steelblue;border:2px solid;border-radius:20px;color:#fff;padding:5px 15px;margin-top:16px;margin-right:16px}.btnX:focus{border-color:#c4c4c4}';
-    const buttons = addButton(1, "A-Z") + addButton(2, "Z-A");
+    const buttons = addButton(1, "A-Z") + addButton(2, "Z-A") + addButton(3, "Reverse current order");
     WF.showAlertDialog(`<style>${htmlEscText(style)}</style><div>${bodyHtml}</div><div>${buttons}</div>`, title);
     const intervalId = setInterval(function () {
       let btn1 = document.getElementById("btn1");
       if (btn1) {
         clearInterval(intervalId);
         const btn2 = document.getElementById("btn2");
+        const btn3 = document.getElementById("btn3");
         btn1.focus();
         btn1.onclick = function () { sortAndMove(children) };
         btn2.onclick = function () { sortAndMove(children, true) };
+        btn3.onclick = function () { reverseOrder(children) };
       }
     }, 50);
   }
